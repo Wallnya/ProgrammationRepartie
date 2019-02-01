@@ -1,16 +1,30 @@
-import java.awt.*;
 import javax.swing.*;
 
 public class UneFenetre extends JFrame {
     UnMobile sonMobile;
     private final int LARG=400, HAUT=250;
     
-    public UneFenetre()
-    {
-	// TODO 
-	// ajouter sonMobile a la fenetre
-	// creer une thread laThread avec sonMobile
-	// afficher la fenetre
-	// lancer laThread 
+    public UneFenetre(){
+    	// TODO
+    	super("Mobile");
+    	this.setSize(LARG,HAUT);
+    	this.setVisible(true);
+    	
+    	
+    	// ajouter sonMobile a la fenetre    
+    	sonMobile = new UnMobile(LARG,HAUT);
+    	this.add(sonMobile);
+    	// creer une thread laThread avec sonMobile
+    	Thread t = new Thread(sonMobile);
+
+    	// afficher la fenetre
+    	t.run();
+    	
+    	// lancer laThread 
+    	t.start();
+    	
+    	
+    	
+
     }
 }
