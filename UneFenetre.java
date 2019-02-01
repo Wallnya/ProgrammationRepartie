@@ -8,39 +8,51 @@ import javax.swing.*;
 
 public class UneFenetre extends JFrame implements ActionListener{
     UnMobile sonMobile;
+    UnMobile sonMobile2;
+
     private final int LARG=400, HAUT=250;
     private Thread t;
+    private Thread t2;
     private JButton sonBouton1;
     private JButton sonBouton2;
     private boolean etat = true;
+    private boolean etat2 = true;
+
     
     public UneFenetre(){
     	super("Mobile");
     	
-    	Container leConteneur = getContentPane();
-    	leConteneur.setLayout (new GridLayout(1, 2));
-    	
     	this.setSize(LARG,HAUT);
     	this.setVisible(true);
     	// ajouter sonMobile a la fenetre    
-    	sonMobile = new UnMobile(LARG/2,HAUT);
 
+    	Container leConteneur = getContentPane();
+    	leConteneur.setLayout (new GridLayout(2, 2));
+    	sonMobile=new UnMobile(LARG/2, HAUT);
     	sonBouton1= new JButton ("Start/Stop");
     	sonBouton1.addActionListener(this);
-    	leConteneur.add(sonBouton1,BorderLayout.WEST);
-    	leConteneur.add(sonMobile,BorderLayout.EAST);
+    	leConteneur.add(sonBouton1);
+    	leConteneur.add(sonMobile);
+    	sonMobile2=new UnMobile(LARG/2, HAUT);
+    	sonBouton2= new JButton ("Start/Stop");
+    	sonBouton2.addActionListener(this);
+    	leConteneur.add(sonBouton2);
+    	leConteneur.add(sonMobile2);
 
     	
     	// creer une thread laThread avec sonMobile
     	t = new Thread(sonMobile);
+    	t2 = new Thread(sonMobile2);
+
     	// afficher la fenetre    	
     	// lancer laThread 
     	t.start();
+    	t2.start();
     }
 
-	@Override
 	public void actionPerformed(ActionEvent parEvt) {
-		if(parEvt.getActionCommand().equals("Start/Stop")){
+		Object source = parEvt.getSource();
+		if(source == sonBouton1){
 			if (etat == true){
 				etat = false;
 				t.suspend();
@@ -48,6 +60,16 @@ public class UneFenetre extends JFrame implements ActionListener{
 			else{
 				etat = true;
 				t.resume();
+			}
+		}
+		if(source == sonBouton2){
+			if (etat2 == true){
+				etat2 = false;
+				t2.suspend();
+			}
+			else{
+				etat2 = true;
+				t2.resume();
 			}
 		}
 	}
