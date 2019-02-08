@@ -1,3 +1,5 @@
+package v2;
+
 public abstract class semaphore {
 
     protected int valeur=0;
@@ -13,6 +15,7 @@ public abstract class semaphore {
         }
 	    valeur--;
 	} catch(InterruptedException e){}
+	System.out.println("Je rentre en section critique : "+valeur);
     }
 
     public synchronized void syncSignal(){

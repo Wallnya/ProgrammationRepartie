@@ -4,7 +4,6 @@ import java.lang.String;
 
 public class Affichage extends Thread{
 	String texte;
-	//static Exclusion exclusionIm = new Exclusion();
 	static semaphoreBinaire mutex = new semaphoreBinaire(1);
 	public Affichage (String txt){texte=txt;}
 	
