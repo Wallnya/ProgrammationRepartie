@@ -1,10 +1,5 @@
-/**
- * 
- */
-import java.io.*;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.BufferedReader;
+package v2;
+
 import java.lang.String;
 
 public class Affichage extends Thread{
@@ -14,10 +9,11 @@ public class Affichage extends Thread{
 	
 	public void run(){
 
+		//Section critique, c'est le for
 		for (int i=0; i<texte.length(); i++){
 		    System.out.print(texte.charAt(i));
 		    try {sleep(100);} catch(InterruptedException e){};
-		}
+		}//Fin
 
 	}
 }
