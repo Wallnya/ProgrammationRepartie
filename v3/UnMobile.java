@@ -49,7 +49,8 @@ public class UnMobile extends JPanel implements Runnable{
 					telleExcp.printStackTrace();
 				}
 			}
-			/*for (sonDebDessin= saLargeur - sonPas; sonDebDessin >0; sonDebDessin-= sonPas){
+			//Retour en arrière
+			for (sonDebDessin= (saLargeur - sonPas)*3; sonDebDessin > (saLargeur - sonPas)*2; sonDebDessin-= sonPas){
 				repaint();
 				try{
 					Thread.sleep(sonTemps);
@@ -57,11 +58,35 @@ public class UnMobile extends JPanel implements Runnable{
 				catch (InterruptedException telleExcp){
 					telleExcp.printStackTrace();
 				}
-			}*/
+			}
+			sem.syncWait();
+			for (sonDebDessin= (saLargeur - sonPas)*2; sonDebDessin > saLargeur - sonPas; sonDebDessin-= sonPas){
+				repaint();
+				try{
+					Thread.sleep(sonTemps);
+				}
+				catch (InterruptedException telleExcp){
+					telleExcp.printStackTrace();
+				}
+			}
+			sem.syncSignal();
+			for (sonDebDessin= saLargeur - sonPas; sonDebDessin > 0; sonDebDessin-= sonPas){
+				repaint();
+				try{
+					Thread.sleep(sonTemps);
+				}
+				catch (InterruptedException telleExcp){
+					telleExcp.printStackTrace();
+				}
+			}
 	    }
     }
 
     public void paintComponent(Graphics telCG){
+    if (sonDebDessin > 333 && sonDebDessin < 666){
+    		Color red = new Color(255,0,0);
+    		telCG.setColor(red);
+    }
 	super.paintComponent(telCG);
 	telCG.fillRect(sonDebDessin, saHauteur/2, sonCote, sonCote);
     }

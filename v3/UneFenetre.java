@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class UneFenetre extends JFrame implements ActionListener{
 
-    private final int LARG=800, HAUT=500;
+    private final int LARG=999, HAUT=500;
     
     private UnMobile[] myMobile;
     private Thread[] myThread;
