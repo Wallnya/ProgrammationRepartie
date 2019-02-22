@@ -7,7 +7,9 @@ public class Consumer extends Thread{
 	}
 
 	public void run(){
-		mailbox.retirer();
+		while(true){
+			mailbox.retirer();
+		}
 	}
 
 }
