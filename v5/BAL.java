@@ -10,12 +10,16 @@ public class BAL {
     //On peut deposer une lettre, mais si la boite au lettre est vide
     //stoup
     public  boolean depose(String lettre)  throws InterruptedException {
-        return queue.offer(lettre,  200, TimeUnit.MILLISECONDS) ;
+        //On dépose une lettre et si au bout de 200 millisecondes,
+    	//il n'y a pas de réaction, alors on stop.
+    	return queue.offer(lettre,  200, TimeUnit.MILLISECONDS) ;
     }
     
     //On peut retirer des lettres mais s'il n'y a rien
     //c'est inutile
     public String retire()  throws InterruptedException {
+        //On retire une lettre et si au bout de 200 millisecondes,
+    	//il n'y a pas de réaction, alors on stop.
         return queue.poll(200, TimeUnit.MILLISECONDS) ;
     }
 }
