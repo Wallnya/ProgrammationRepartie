@@ -13,10 +13,10 @@ public class Productor extends Thread{
 
 	public void run(){
 		String str;
+		Scanner sc = new Scanner(System.in);
 		try{
 			while(true){
 				//Pour pouvoir écrire la lettre dans la terminale
-				Scanner sc = new Scanner(System.in);
 				str = sc.nextLine();
 				texte = str;
 				

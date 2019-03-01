@@ -16,7 +16,7 @@ public class main {
 		
 		//Puis la création des threads
 		Thread [] producteurs = new Thread[5];
-		Thread [] consommateurs = new Thread[2];
+		Thread [] consommateurs = new Thread[5];
 		
 		//On prépare les threads du producteurs
 		for (int i =0;i<producteurs.length;i++){
